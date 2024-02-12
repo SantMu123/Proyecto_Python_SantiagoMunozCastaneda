@@ -21,12 +21,12 @@ def menuCoordinador():
     comando2 = input("""
                      Sistema Coordinador
                      
-                     A: Campers Inscritos *
+                     A: Asignar Notas Nuevos Campers
                      B: Cambiar de estado a Campers Inscritos
-                     C: Asignar Ruta a Camper
-                     D: Campers Aprobados *
-                     E: Trainers Activos *
-                     F: Notas Campers *
+                     C: Construir Rutas
+                     D: Asignar Campers a Rutas
+                     E: Asignar Notas
+                     F: Otras Funcionalidades
                      G: Asignar Notas
                      H: Informacion asociada con las rutas de entrenamiento *
                      
@@ -37,12 +37,22 @@ def menuCoordinador():
     else:
         print("Comando Incorrecto")
         menuCoordinador()
-        
-def Sub_menuTrainers():
+
+def subMenuAsignarNotas():
+    comando = input("""
+                     Asignar Notas
+                     
+                     A: Asignar Nota a Camper
+                     B: Asignar Nota a Todos de Forma Aleatoria
+                     C: Salir al Menú anterior
+                     
+                     """)
     
-    rutas = ["NodeJs", "Java", "NetCore"]
-    trainers = [{"Oscar": 8}, {"Santiago": 12}, {"Olga": 16}, {"Lulu": 20}]
-    
+    if comando in ["A", "B", "C"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuAsignarNotas()
     
 
 

@@ -1,13 +1,278 @@
+import json
 import menu
-"""
-comando = menu.principal()
+import random
+import AsignarCampersRutas
+from tabulate import tabulate
 
-if comando == "A":
-    print("estudiante")
-elif comando == "B":
-    print("trainer")
-elif comando == "C":
-    print("coordinador")
+with open('Campers.json') as f:
+    datos = json.load(f)
+
+comando1 = menu.principal()
+
+if comando1 == "C":
+    comando2 = menu.menuCoordinador()
+    if comando2 == "A":
+        comando3 = menu.subMenuAsignarNotas()
+        while comando3 != "C":
+            if comando3 == "A":
+                print("Los siguientes son los estudiantes inscritos: ")
+
+                datos_tabla = []
+                for i, persona in enumerate(datos, start=1):
+                    datos_tabla.append([i] + [persona[key] for key in persona])
+
+                encabezado = ['#'] + list(datos[0].keys())
+
+                print(tabulate(datos_tabla, headers=encabezado))
+                print("**********************************************")
+
+                nombre = input("Digite el nombre del estudiante al que desea digitar notas: ")
+                notaTeorica = int(input("Digite la nota teorica: "))
+                notaPractica = int(input("Digite la nota practica: "))
+
+                promedio = (notaTeorica + notaPractica) / 2
+
+                print("El promedio del estudiante es: ", promedio)
+
+                # Usar un indicador para verificar si se ha encontrado al estudiante
+                encontrado = False
+                for camper in datos:
+                    if nombre == camper['name']:
+                        camper['Teoric Note'] = notaTeorica
+                        camper['Practical Note'] = notaPractica
+                        camper['Average Note'] = promedio
+                        encontrado = True
+                        break  # Salir del bucle una vez que se haya encontrado al estudiante
+
+                if not encontrado:
+                    print("No se encontró ningún estudiante con ese nombre.")
+                else:
+                    datos_tabla = []
+                    for i, persona in enumerate(datos, start=1):
+                        datos_tabla.append([i] + [persona[key] for key in persona])
+
+                    print(tabulate(datos_tabla, headers=encabezado))
+            elif comando3 == "B":
+                for camper in datos:
+                    notaTeorica = random.randint(60,100)
+                    notaPractica = random.randint(60,100)
+                    promedio = (notaTeorica + notaPractica) / 2
+
+                    camper['Teoric Note'] = notaTeorica
+                    camper['Practical Note'] = notaPractica  # Corregir aquí
+                    camper['Average Note'] = promedio
+
+                datos_tabla = []
+                for i, persona in enumerate(datos, start=1):
+                    datos_tabla.append([i] + [persona[key] for key in persona])
+
+                encabezado = ['#'] + list(datos[0].keys())
+
+                print(tabulate(datos_tabla, headers=encabezado))
+
+            comando3 = menu.subMenuAsignarNotas()
+            
+        if comando3 == "C":
+            comando2 = menu.menuCoordinador()
+            
+    if comando2 == "B":
+        comando2B = "A"
+        while comando2B != "B":
+            print("Se tienen los siguientes estudiantes: ")
+            datos_tabla = []
+            for i, persona in enumerate(datos, start=1):
+                datos_tabla.append([i] + [persona[key] for key in persona])
+
+            encabezado = ['#'] + list(datos[0].keys())
+
+            print(tabulate(datos_tabla, headers=encabezado))
+            print("*******************************************************")
+            print("""
+                Existen los siguientes Estados posibles:
+                
+                A) Proceso de Ingreso
+                B) Inscrito
+                C) Aprobado
+                D) Cursando
+                E) Graduado
+                F) Expulsado
+                G) Retirado
+                
+                """)
+            print("*******************************************************")
+            
+            nombre = input("Digite el nombre del estudiante al que desea cambiar de estado: ")
+            estado = input("Digite el nuevo estado (A-G): ").upper()
+            
+            estados_validos = ["A", "B", "C", "D", "E", "F", "G"]
+            
+            if estado in estados_validos:
+                for camper in datos:
+                    if camper['name'] == nombre:
+                        # Mapear la entrada del usuario a un estado correspondiente
+                        estados = {"A": "Proceso de Ingreso", "B": "Inscrito", "C": "Aprobado", "D": "Cursando", "E": "Graduado", "F": "Expulsado", "G": "Retirado"}
+                        camper['Status'] = estados[estado]
+                
+                # Mostrar la tabla actualizada
+                datos_tabla = []
+                for i, persona in enumerate(datos, start=1):
+                    datos_tabla.append([i] + [persona[key] for key in persona])
+
+                encabezado = ['#'] + list(datos[0].keys())
+
+                print(tabulate(datos_tabla, headers=encabezado))
+            else:
+                print("Estado no válido. Por favor, ingrese una opción válida (A-G).")
+
+            comando2B = input("""Seleccione según su necesdad: 
+                            
+                                A): Asignar un nuevo Estado
+                                B): Salir al Menú anterior
+                            
+                            """)
+        
+        if comando3 == "B":
+            comando2 = menu.menuCoordinador()
     
-"""
-menu.Sub_menuTrainers()
+    if comando2 == "C":
+
+        def mostrar_clases(datos):
+            print("Se tienen los siguientes profesores, rutas y salones")
+            print("***************************************************")
+
+            tabla = []
+            for fila in datos:
+                nombre_profesor = fila["Profesor"]
+                hora = fila["Hora"]
+                ruta = fila["Ruta"]
+                salon = fila["Salon"]
+
+                tabla.append([nombre_profesor, hora, ruta, salon])
+
+            encabezados = ["Profesor", "Hora", "Ruta", "Salon"]
+            
+            print(tabulate(tabla, headers=encabezados))
+
+        def crear_rutas():
+            bandera = True
+            rutas = set()
+            profesores_seleccionados = set()
+            rutas_seleccionadas = set()
+            salones_seleccionados = set()
+
+            while bandera:
+                comando_ruta = input("Presione A si quiere seguir creando Rutas, de lo contrario B: ")
+                if comando_ruta.upper() == "B":
+                    bandera = False
+                    continue
+
+                profesor = input("Digite el nombre del profesor de la Ruta: ")
+                if profesor in profesores_seleccionados:
+                    print("Este profesor ya ha sido seleccionado anteriormente.")
+                    continue
+
+                ruta = input("Digite la ruta: ")
+                if ruta in rutas_seleccionadas:
+                    print("Esta ruta ya ha sido seleccionada anteriormente.")
+                    continue
+
+                salon = input("Digite el salon: ")
+                if salon in salones_seleccionados:
+                    print("Este salon ya ha sido seleccionado anteriormente.")
+                    continue
+
+                profesores_seleccionados.add(profesor)
+                rutas_seleccionadas.add(ruta)
+                salones_seleccionados.add(salon)
+
+                nueva_ruta = (profesor, ruta, salon)
+                rutas.add(nueva_ruta)
+
+            return rutas
+
+        datos_clases = [
+            {"Profesor": "Oscar", "Hora": "08:00 - 12:00", "Ruta": "Node JS", "Salon": "A Kepler"},
+            {"Profesor": "Sofía", "Hora": "12:00 - 16:00", "Ruta": "Java", "Salon": "B Apolo"},
+            {"Profesor": "Santiago", "Hora": "16:00 - 20:00", "Ruta": "NetCore", "Salon": "C Artemis"}
+        ]
+
+        mostrar_clases(datos_clases)
+
+        nuevas_rutas = crear_rutas()
+        print(nuevas_rutas)
+        
+        comando2 = menu.menuCoordinador()
+        
+        
+    if comando2 == "D":
+        print("Se tienen los siguientes Campers: ")
+        datos_tabla = []
+        for i, persona in enumerate(datos, start=1):
+            datos_tabla.append([i] + [persona[key] for key in persona])
+
+        encabezado = ['#'] + list(datos[0].keys())
+
+        print(tabulate(datos_tabla, headers=encabezado))
+        
+        print("******************************************")
+        print("Se tienen las siguientes Rutas Establecidas: ")
+        print("******************************************")
+        
+        encabezado_rutas = ['#', 'Profesor', 'Ruta', 'Salon']  # Definir los encabezados de la tabla de rutas
+        
+        datos_rutas = []
+        for i, ruta in enumerate(nuevas_rutas, start=1):  # Suponiendo que rutas_creadas es tu lista de tuplas de rutas
+            datos_rutas.append([i] + list(ruta))
+
+        print(tabulate(datos_rutas, headers=encabezado_rutas))
+        
+        comandoAsignarCamper = "A"
+        while comandoAsignarCamper != "C":
+            comandoAsignarCamper = input("""
+                                     Seleccione según su necesidad:
+                                     
+                                     A) Asignar manualmente camper a una ruta
+                                     B) Asignar aleatoriamente
+                                     C) Volver al menu anterior
+                                     D) Volver a ver la tabla de Campers y las rutas
+                                     
+                                     """)
+
+            if comandoAsignarCamper == "A":
+                nom = input("Digita el nombre del camper al que quieres asignar a una ruta: ")
+                rut = input("Selecciona la Ruta, recuerda que hay capacidad de 33 estudiantes: ")
+                tabla = AsignarCampersRutas.asignar(rut, datos, nom)
+                for i, ruta in enumerate(tabla, start=1):
+                    print(f"Grupo {i}:")
+                    print(tabulate(ruta, headers="keys"))
+                    print()
+
+            elif comandoAsignarCamper == "B":
+                ruta1, ruta2, ruta3 = AsignarCampersRutas.asignarAleatorio(datos)
+                print("Ruta Node JS:")
+                print(tabulate(ruta1, headers="keys"))
+                print()
+                print("Ruta Java:")
+                print(tabulate(ruta2, headers="keys"))
+                print()
+                print("Ruta NetCore:")
+                print(tabulate(ruta3, headers="keys"))
+                print()
+                break
+            
+        comando2 = menu.menuCoordinador()
+        
+    if comando2 == "E":
+        RutaSelec = input("Digita la Ruta aa la cual quieres acceder para colocar Nota a un estudiante")
+        Examen = input("Digita el numero del examen que vas a digitar: ")
+        
+        if RutaSelec == "Node":
+            print("Se tienen los siguientes estudiantes: ")
+            print(tabulate(ruta1, headers="keys"))
+        elif RutaSelec == "Java":
+            print("Se tienen los siguientes estudiantes: ")
+            print(tabulate(ruta2, headers="keys"))
+        elif RutaSelec == "NetCore":
+            print("Se tienen los siguientes estudiantes: ")
+            print(tabulate(ruta3, headers="keys"))
+            

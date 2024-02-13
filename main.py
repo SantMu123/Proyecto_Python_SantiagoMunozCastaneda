@@ -198,8 +198,7 @@ while comando1 != "D":
                 #comando2 = menu.menuCoordinador()
                 
             if comando2 == "E":
-                RutaSelec = input("Digita la Ruta aa la cual quieres acceder para colocar Nota a un estudiante")
-                Examen = input("Digita el numero del examen que vas a digitar: ")
+                RutaSelec = input("Digita la Ruta aa la cual quieres acceder para colocar Nota a un estudiante: ")
                 
                 if RutaSelec == "Node":
                     print("Se tienen los siguientes estudiantes: ")

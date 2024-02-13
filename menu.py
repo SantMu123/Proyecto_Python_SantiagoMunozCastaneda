@@ -101,3 +101,18 @@ def subMenuCreacionRuta():
     else:
         print("Comando Incorrecto")
         subMenuCreacionRuta()
+
+def subMenuAsignarRutas():
+    comando = input("""
+                                    Seleccione según su necesidad:
+                                    
+                                    A) Asignar manualmente camper a una ruta
+                                    B) Asignar aleatoriamente
+                                    C) Volver al menu anterior
+                                    D) Volver a ver la tabla de Campers y las rutas
+                                            """)
+    if comando in ["A", "B", "C", "D"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuCreacionRuta()

@@ -9,3 +9,11 @@ def visualizar(listaCampers):
 
     print(tabulate(datos_tabla, headers=encabezado))
 
+def visualizarRutas(listaRutas):
+    datos_rutas = []
+    for i, ruta in enumerate(listaRutas, start=1):
+        datos_rutas.append([i] + list(ruta))
+
+    encabezado_rutas = ['#', 'Profesor', 'Ruta', 'Salon']
+    
+    print(tabulate(datos_rutas, headers=encabezado_rutas))

@@ -160,38 +160,18 @@ while comando1 != "D":
                 
             if comando2 == "D":
                 print("Se tienen los siguientes Campers: ")
-                datos_tabla = []
-                for i, persona in enumerate(datos, start=1):
-                    datos_tabla.append([i] + [persona[key] for key in persona])
+                TablaCampers.visualizar(datos)
 
-                encabezado = ['#'] + list(datos[0].keys())
-
-                print(tabulate(datos_tabla, headers=encabezado))
-                
                 print("******************************************")
                 print("Se tienen las siguientes Rutas Establecidas: ")
                 print("******************************************")
                 
-                encabezado_rutas = ['#', 'Profesor', 'Ruta', 'Salon']  # Definir los encabezados de la tabla de rutas
-                
-                datos_rutas = []
-                for i, ruta in enumerate(nuevas_rutas, start=1):  # Suponiendo que rutas_creadas es tu lista de tuplas de rutas
-                    datos_rutas.append([i] + list(ruta))
-
-                print(tabulate(datos_rutas, headers=encabezado_rutas))
+                TablaCampers.visualizarRutas(nuevas_rutas)
                 
                 comandoAsignarCamper = "A"
                 while comandoAsignarCamper != "C":
-                    comandoAsignarCamper = input("""
-                                            Seleccione según su necesidad:
-                                            
-                                            A) Asignar manualmente camper a una ruta
-                                            B) Asignar aleatoriamente
-                                            C) Volver al menu anterior
-                                            D) Volver a ver la tabla de Campers y las rutas
-                                            
-                                            """)
-
+                    comandoAsignarCamper = menu.subMenuAsignarRutas()
+    
                     if comandoAsignarCamper == "A":
                         nom = input("Digita el nombre del camper al que quieres asignar a una ruta: ")
                         rut = input("Selecciona la Ruta, recuerda que hay capacidad de 33 estudiantes: ")
@@ -214,7 +194,7 @@ while comando1 != "D":
                         print()
                         break
                     
-                comando2 = menu.menuCoordinador()
+                #comando2 = menu.menuCoordinador()
                 
             if comando2 == "E":
                 RutaSelec = input("Digita la Ruta aa la cual quieres acceder para colocar Nota a un estudiante")

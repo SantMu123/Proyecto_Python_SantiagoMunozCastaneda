@@ -7,10 +7,11 @@ def principal():
           A: Estudiante
           B: Trainer
           C: Coordinador
+          D: Finalizar Programa
           
           """)
     
-    if comando1 in ["A", "B", "C"]:
+    if comando1 in ["A", "B", "C", "D"]:
         return comando1
     else:
         print("Comando Incorrecto")
@@ -28,15 +29,47 @@ def menuCoordinador():
                      E: Asignar Notas
                      F: Otras Funcionalidades
                      G: Asignar Notas
-                     H: Informacion asociada con las rutas de entrenamiento *
+                     H: Informacion asociada con las rutas de entrenamiento 
+                     I: Volver al menú anterior
                      
                      """)
     
-    if comando2 in ["A", "B", "C", "D", "E", "F", "G"]:
+    if comando2 in ["A", "B", "C", "D", "E", "F", "G", "H", "I"]:
         return comando2
     else:
         print("Comando Incorrecto")
         menuCoordinador()
+
+def subMenuEstado():
+    comando = input("""
+                Existen los siguientes Estados posibles:
+                
+                A) Proceso de Ingreso
+                B) Inscrito
+                C) Aprobado
+                D) Cursando
+                E) Graduado
+                F) Expulsado
+                G) Retirado
+                        """)
+    if comando in ["A", "B", "C", "D", "E", "F", "G"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuEstado()
+
+def subMenuInternodeEstado():
+    comando = input("""Seleccione según su necesdad: 
+                                    
+                                A): Asignar un nuevo Estado
+                                B): Salir al Menú anterior
+                                    
+                                    """)
+    if comando in ["A", "B"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuInternodeEstado()
 
 def subMenuAsignarNotas():
     comando = input("""
@@ -54,5 +87,17 @@ def subMenuAsignarNotas():
         print("Comando Incorrecto")
         subMenuAsignarNotas()
     
-
-
+def subMenuCreacionRuta():
+    comando = input("""
+                    Presione:
+                    
+                            A: Para crear Rutas
+                            B: Para Regresar al menú inicial
+                    
+                    """)
+    
+    if comando in ["A", "B"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuCreacionRuta()

@@ -6,6 +6,14 @@ import TablaCampers
 import NotasModulos
 from tabulate import tabulate
 
+Ingreso = []
+Inscrito = []
+Aprobado = []
+Cursando = []
+Graduado = []
+Expulsado = []
+Retirado = []
+
 with open('Campers.json') as f:
     datos = json.load(f)
 comando1 = "A"
@@ -84,9 +92,15 @@ while comando1 != "D":
                     for camper in datos:
                         if camper['name'] == nombre:
                             # Mapear la entrada del usuario a un estado correspondiente
-                            estados = {"A": "Proceso de Ingreso", "B": "Inscrito", "C": "Aprobado", "D": "Cursando", "E": "Graduado", "F": "Expulsado", "G": "Retirado"}
-                            camper['Status'] = estados[estado]
+                            estados = {"A": Ingreso, "B": Inscrito, "C": Aprobado, "D": Cursando, "E": Graduado, "F": Expulsado, "G": Retirado}
+                            estados[estado].append(camper)
+                            break
+                            #camper['Status'] = estados[estado]
+                        if estado == "F":
+                            datos.remove(camper)
+                            print("Se ha eliminado correctamente!!!!")
                     
+                    #CambioEstado.NuevoEstado(nombre, estado, datos) #Añade camper a la lista de estado especificada
                     TablaCampers.visualizar(datos)
                     comando2B = menu.subMenuInternodeEstado()
 
@@ -212,4 +226,30 @@ while comando1 != "D":
                     print("Se tienen los siguientes estudiantes: ")
                     print(tabulate(ruta3, headers="keys"))
                     NotasModulos.VisualizarGrupos(RutaSelec, ruta3)
+
+            if comando2 == "F":
+                comando3B = "A"
+                while comando3B != "H":
+                    estado_ = menu.subMenuVisualizarEstado()
+                    if estado_ == "A":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Ingreso)                
+                    if estado_ == "B":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Inscrito)  
+                    if estado_ == "C":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Aprobado)  
+                    if estado_ == "D":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Cursando)   
+                    if estado_ == "E":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Graduado)  
+                    if estado_ == "F":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Expulsado)  
+                    if estado_ == "G":
+                        print(" Se encuentran los siguientes estudiantes:  \n")
+                        TablaCampers.visualizar(Retirado)  
             

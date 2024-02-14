@@ -1,5 +1,6 @@
 import menu
 import random
+import TablaCampers
 import tabulate
 """
 def VisualizarGrupos(ruta1, ruta2, ruta3):
@@ -59,14 +60,8 @@ def VisualizarGrupos(ruta, ListaRuta):
                         Ave = int(NT*0.3 + NP*0.6 + AC*0.10)
                         infoModulo1 = {"name": camper['name'], "Modulo 1": {"Nota Teorica": NT, "Nota Practica":NP, "Actividades":AC, "Final":Ave}}
                         nuevaTablaM1.append(infoModulo1)
-                        print("***********************************************")
-                        print("Nombre: ", nuevaTablaM1[i]['name'])
-                        print("Nota Teorica: ", nuevaTablaM1[i]['Modulo 1']['Nota Teorica'])
-                        print("Nota Practica: ", nuevaTablaM1[i]['Modulo 1']['Nota Practica'])
-                        print("Nota Promedio: ", nuevaTablaM1[i]['Modulo 1']['Actividades'])
-                        print("Nota Final: ", nuevaTablaM1[i]['Modulo 1']['Final'])
-                        print("***********************************************")
 
+                    TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "B":
             comando2 = "A"
             while comando2 != "C": 
@@ -96,13 +91,8 @@ def VisualizarGrupos(ruta, ListaRuta):
                         Ave = int(NT*0.3 + NP*0.6 + AC*0.10)
                         infoModulo2 = {"name": camper['name'], "Modulo 2": {"Nota Teorica": NT, "Nota Practica":NP, "Actividades":AC, "Final":Ave}}
                         nuevaTablaM2.append(infoModulo2)
-                        print("***********************************************")
-                        print("Nombre: ", nuevaTablaM2[i]['name'])
-                        print("Nota Teorica: ", nuevaTablaM2[i]['Modulo 2']['Nota Teorica'])
-                        print("Nota Practica: ", nuevaTablaM2[i]['Modulo 2']['Nota Practica'])
-                        print("Nota Promedio: ", nuevaTablaM2[i]['Modulo 2']['Actividades'])
-                        print("Nota Final: ", nuevaTablaM2['Modulo 2']['Final'])
-                        print("***********************************************")
+                    
+                    TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "C":
             while comando2 != "C": 
                 comando2 = menu.subMenuNotaModulo()
@@ -131,13 +121,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                         Ave = int(NT*0.3 + NP*0.6 + AC*0.10)
                         infoModulo3 = {"name": camper['name'], "Modulo 3": {"Nota Teorica": NT, "Nota Practica":NP, "Promedio":AC, "Final":Ave}}
                         nuevaTablaM3.append(infoModulo3)
-                        print("***********************************************")
-                        print("Nombre: ", nuevaTablaM3[i]['name'])
-                        print("Nota Teorica: ", nuevaTablaM3[i]['Modulo 3']['Nota Teorica'])
-                        print("Nota Practica: ", nuevaTablaM3[i]['Modulo 3']['Nota Practica'])
-                        print("Nota Promedio: ", nuevaTablaM3[i]['Modulo 3']['Actividades'])
-                        print("Nota Final: ", nuevaTablaM3['Modulo 3']['Final'])
-                        print("***********************************************")
+                    TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "D":
             while comando2 != "C": 
                 comando2 = menu.subMenuNotaModulo()
@@ -166,13 +150,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                         Ave = int(NT*0.3 + NP*0.6 + AC*0.10)
                         infoModulo4 = {"name": camper['name'], "Modulo 4": {"Nota Teorica": NT, "Nota Practica":NP, "Actividades":AC, "Final":Ave}}
                         nuevaTablaM4.append(infoModulo4)
-                        print("***********************************************")
-                        print("Nombre: ", nuevaTablaM4[i]['name'])
-                        print("Nota Teorica: ", nuevaTablaM4[i]['Modulo 4']['Nota Teorica'])
-                        print("Nota Practica: ", nuevaTablaM4[i]['Modulo 4']['Nota Practica'])
-                        print("Nota Promedio: ", nuevaTablaM4[i]['Modulo 4']['Actividades'])
-                        print("Nota Final: ", nuevaTablaM4['Modulo 4']['Final'])
-                        print("***********************************************")
+                    TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "E":
             while comando2 != "C": 
                 comando2 = menu.subMenuNotaModulo()
@@ -201,10 +179,4 @@ def VisualizarGrupos(ruta, ListaRuta):
                         Ave = int(NT*0.3 + NP*0.6 + AC*0.10)
                         infoModulo5 = {"name": camper['name'], "Modulo 5": {"Nota Teorica": NT, "Nota Practica":NP, "Actividades":AC, "Final":Ave}}
                         nuevaTablaM5.append(infoModulo5)
-                        print("***********************************************")
-                        print("Nombre: ", nuevaTablaM5[i]['name'])
-                        print("Nota Teorica: ", nuevaTablaM5[i]['Modulo 5']['Nota Teorica'])
-                        print("Nota Practica: ", nuevaTablaM5[i]['Modulo 5']['Nota Practica'])
-                        print("Nota Promedio: ", nuevaTablaM5[i]['Modulo 5']['Actividades'])
-                        print("Nota Final: ", nuevaTablaM5['Modulo 5']['Final'])
-                        print("***********************************************")
+                    TablaCampers.visualizarNotasModulos(nuevaTablaM1)

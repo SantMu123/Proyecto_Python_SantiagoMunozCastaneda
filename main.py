@@ -3,6 +3,7 @@ import menu
 import random
 import AsignarCampersRutas
 import TablaCampers
+import NotasModulos
 from tabulate import tabulate
 
 with open('Campers.json') as f:
@@ -203,10 +204,13 @@ while comando1 != "D":
                 if RutaSelec == "Node":
                     print("Se tienen los siguientes estudiantes: ")
                     print(tabulate(ruta1, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, ruta1)
                 elif RutaSelec == "Java":
                     print("Se tienen los siguientes estudiantes: ")
                     print(tabulate(ruta2, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, ruta2)
                 elif RutaSelec == "NetCore":
                     print("Se tienen los siguientes estudiantes: ")
                     print(tabulate(ruta3, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, ruta3)
             

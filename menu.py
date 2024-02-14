@@ -109,10 +109,42 @@ def subMenuAsignarRutas():
                                     A) Asignar manualmente camper a una ruta
                                     B) Asignar aleatoriamente
                                     C) Volver al menu anterior
-                                    D) Volver a ver la tabla de Campers y las rutas
+                                    D) Volver a ver la tabla de Campers y las rutas ***
                                             """)
     if comando in ["A", "B", "C", "D"]:
         return comando
     else:
         print("Comando Incorrecto")
         subMenuCreacionRuta()
+        
+def subMenuVisualizarModulo():
+    comando = input("""
+                                    Seleccione según el modulo que deseas ver:
+                                    
+                                    A) Fundamentos de programacion
+                                    B) Programacion Web
+                                    C) Programacion Formal
+                                    D) Base de datos
+                                    E) Backend
+                                    F) Volver al Menu Anterior
+                                            """)
+    if comando in ["A", "B", "C", "D", "E", "F"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuVisualizarModulo()
+        
+def subMenuNotaModulo():
+    comando = input("""
+                                                Seleccione según su necesidad:
+                                                
+                                                A) Asignar nota manualmente a camper
+                                                B) Asignar aleatoriamente
+                                                C) Volver al menu anterior
+                                                D) Volver a ver la tabla de Campers y las rutas
+                                            """)
+    if comando in ["A", "B", "C", "D"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuNotaModulo()

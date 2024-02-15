@@ -4,7 +4,12 @@ import random
 import AsignarCampersRutas
 import TablaCampers
 import NotasModulos
+from ModuloEstudiante import ModuloCamper
 from tabulate import tabulate
+
+def guardar_lista_estudiantes(lista_estudiantes):
+    with open('Campers.json', 'w') as file:
+        file.write(json.dumps(lista_estudiantes, indent=4))
 
 Ingreso = []
 Inscrito = []
@@ -13,7 +18,7 @@ Cursando = []
 Graduado = []
 Expulsado = []
 Retirado = []
-
+datos = []
 with open('Campers.json') as f:
     datos = json.load(f)
 comando1 = "A"
@@ -33,7 +38,7 @@ while comando1 != "D":
 
                         print("**********************************************")
 
-                        nombre = input("Digite el nombre del estudiante al que desea digitar notas: ")
+                        ID = int(input("Digite el ID del estudiante al que desea digitar notas: "))
                         notaTeorica = int(input("Digite la nota teorica: "))
                         notaPractica = int(input("Digite la nota practica: "))
 
@@ -41,29 +46,33 @@ while comando1 != "D":
 
                         print("El promedio del estudiante es: ", promedio)
 
-                        # Usar un indicador para verificar si se ha encontrado al estudiante
                         encontrado = False
-                        for camper in datos:
-                            if nombre == camper['name']:
+                        
+                        for i in range(len(datos)):
+                            if datos[i]['ID'] == ID:
+                                camper = datos[i]  # Comparar ID como cadenas
                                 camper['Teoric Note'] = notaTeorica
                                 camper['Practical Note'] = notaPractica
                                 camper['Average Note'] = promedio
                                 if promedio >= 60:
                                     camper['Status'] = "Aprobado"
                                 else:
-                                    camper['Status'] = "No Aprobado"
-                                encontrado = True
-                                break  # Salir del bucle una vez que se haya encontrado al estudiante
+                                    camper['Status'] = "No Aprobado"                                
+                                encontrado = True                                
+                                datos.pop(i)
+                                datos.append(camper) 
 
                         if not encontrado:
-                            print("No se encontró ningún estudiante con ese nombre.")
+                            print("No se encontró ningún estudiante con ese ID.")
                         else:
+                            guardar_lista_estudiantes(datos)
+                            print("Los datos del estudiante han sido actualizados.")
                             TablaCampers.visualizar(datos)
 
                     elif comando3 == "B":
                         for camper in datos:
-                            notaTeorica = random.randint(60,100)
-                            notaPractica = random.randint(60,100)
+                            notaTeorica = random.randint(20,100)
+                            notaPractica = random.randint(20,100)
                             promedio = (notaTeorica + notaPractica) / 2
 
                             camper['Teoric Note'] = notaTeorica
@@ -252,4 +261,10 @@ while comando1 != "D":
                     if estado_ == "G":
                         print(" Se encuentran los siguientes estudiantes:  \n")
                         TablaCampers.visualizar(Retirado)  
-            
+
+    elif comando1 == "A":
+        comandoCam = ModuloCamper()
+        if comandoCam == "E":
+            continue
+    elif comando1 == "B":
+        print("Modulo trainer")

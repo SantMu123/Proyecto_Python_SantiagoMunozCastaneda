@@ -4,7 +4,7 @@ def principal():
           
           Selecciona la opcón según corresponda:
           
-          A: Estudiante
+          A: Camper
           B: Trainer
           C: Coordinador
           D: Finalizar Programa
@@ -187,6 +187,21 @@ def MenuCamper():
     else:
         print("Comando Incorrecto")
         MenuCamper()
+
+def subMenuNotasCamper():
+    comando = input("""
+                     Selecciona
+                     
+                     A: Ingresar
+                     B: Volver al menú inicial
+                     
+                     """)
+    
+    if comando in ["A", "B"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuNotasCamper()
 
 #MENÚ Trainer
 #************************************************************************************************

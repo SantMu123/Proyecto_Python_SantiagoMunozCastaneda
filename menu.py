@@ -29,10 +29,11 @@ def menuCoordinador():
                      E: Asignar Notas
                      F: Reporte Estado Campers
                      G: Volver al menú anterior
+                     H: Añadir/Eliminar Trainer
                      
                      """)
     
-    if comando2 in ["A", "B", "C", "D", "E", "F", "G"]:
+    if comando2 in ["A", "B", "C", "D", "E", "F", "G", "H"]:
         return comando2
     else:
         print("Comando Incorrecto")
@@ -177,12 +178,10 @@ def MenuCamper():
                                 ¿QUÉ DESEAS HACER?
                     A: Inscripcion
                     B: Ver Notas
-                    C: Ver Trainers
-                    D: Ver Rutas Modulos
-                    E: Volver Menú anterior
+                    C: Volver Menú anterior
                     
                     """)
-    if comando in ["A", "B", "C", "D", "E"]:
+    if comando in ["A", "B", "C"]:
         return comando
     else:
         print("Comando Incorrecto")
@@ -236,7 +235,33 @@ def subMenuTrainer():
     else:
         print("Comando Incorrecto")
         MenuCamper()
-
+        
+def subMenuTrainerHora():
+    comando = input(""" 
+                                Selecciona Tu hora
+                            A) 2:00 PM
+                            B) 6:00 PM
+                            C) 10:00 PM
+                            """)
+    if comando in ["A", "B", "C"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuTrainerHora()
+        
+        
+def AñadirEliTrainer():
+    comando = input(""" 
+                                Selecciona:
+                            A) Añadir nuevo Trainer
+                            B) Eliminar Trainer
+                            C) Volver 
+                            """)
+    if comando in ["A", "B", "C"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        AñadirEliTrainer()
 #************************************************************************************************
         
 

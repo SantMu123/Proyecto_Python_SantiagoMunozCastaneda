@@ -207,31 +207,31 @@ def subMenuNotasCamper():
 #************************************************************************************************
 
 def MenuTrainer(lista):
-    nombre = input("""
-                   *********************
-                   Ingresa tu nombre: 
-                   *********************
+    try:
+        nombre = input("""
+                    *********************
+                    Ingresa tu nombre: 
+                    *********************
 
-                   """)
-    if nombre in lista:
-        print("BIENVENIDO --->", nombre)
-    else:
+                    """)
+        for i in lista:
+            if i['Profesor'] == nombre:
+                print("BIENVENIDO --->", nombre)            
+    except Exception:
         print("Acceso denegado, vuelve a intentarlo: ")
         MenuTrainer(lista)
 
 
 def subMenuTrainer():
     comando = input("""
-                    BIENVENDIO AL MODULO TRAINERS
+                    BIENVENIDO AL MODULO TRAINERS
                                 ¿QUÉ DESEAS HACER?
-                    A: Inscripcion
-                    B: Ver Notas
-                    C: Ver Trainers
-                    D: Ver Rutas Modulos
-                    E: Salir
+                    A: Registro Nuevo Trainer
+                    B: Ver Notas Campers
+                    C: Salir
                     
                     """)
-    if comando in ["A", "B", "C", "D", "E"]:
+    if comando in ["A", "B", "C"]:
         return comando
     else:
         print("Comando Incorrecto")

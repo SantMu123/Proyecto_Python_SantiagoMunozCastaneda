@@ -10,6 +10,9 @@ from tabulate import tabulate
 def guardar_lista_estudiantes(lista_estudiantes):
     with open('Campers.json', 'w') as file:
         file.write(json.dumps(lista_estudiantes, indent=4))
+def guardar_lista_Trainers(lista_trainers):
+    with open('Campers.json', 'w') as file:
+        file.write(json.dumps(lista_trainers, indent=4))
 
 Ingreso = []
 Inscrito = []
@@ -19,6 +22,9 @@ Graduado = []
 Expulsado = []
 Retirado = []
 datos = []
+with open('Trainers.json') as f:
+    datos_clases = json.load(f)
+    
 with open('Campers.json') as f:
     datos = json.load(f)
 comando1 = "A"
@@ -27,7 +33,7 @@ while comando1 != "D":
     comando1 = menu.principal()
     if comando1 == "C":
         comando2 = "A"
-        while comando2 != "I":
+        while comando2 != "G":
             comando2 = menu.menuCoordinador()
             if comando2 == "A":
                 comando3 = menu.subMenuAsignarNotas()
@@ -113,6 +119,9 @@ while comando1 != "D":
                     TablaCampers.visualizar(datos)
                     comando2B = menu.subMenuInternodeEstado()
 
+            if comando2 == "H":
+                print("Añdir nuevo trainer")
+
             if comando2 == "C":
                 def mostrar_clases(datos):
                     print("Se tienen los siguientes profesores, rutas y salones")
@@ -167,13 +176,13 @@ while comando1 != "D":
                         rutas.add(nueva_ruta)
 
                     return rutas
-
+                """
                 datos_clases = [
                     {"Profesor": "Oscar", "Hora": "08:00 - 12:00", "Ruta": "Node JS", "Salon": "A Kepler"},
-                    {"Profesor": "Sofía", "Hora": "12:00 - 16:00", "Ruta": "Java", "Salon": "B Apolo"},
+                    {"Profesor": "Sofia", "Hora": "12:00 - 16:00", "Ruta": "Java", "Salon": "B Apolo"},
                     {"Profesor": "Santiago", "Hora": "16:00 - 20:00", "Ruta": "NetCore", "Salon": "C Artemis"}
                 ]
-
+                """
                 mostrar_clases(datos_clases)
 
                 nuevas_rutas = crear_rutas()
@@ -189,8 +198,11 @@ while comando1 != "D":
                 print("******************************************")
                 print("Se tienen las siguientes Rutas Establecidas: ")
                 print("******************************************")
-                
-                TablaCampers.visualizarRutas(nuevas_rutas)
+                try:
+                    TablaCampers.visualizarRutas(nuevas_rutas)
+                except Exception:
+                    print("No Hay Trainers registrados: ")
+                    continue
                 
                 comandoAsignarCamper = "A"
                 while comandoAsignarCamper != "C":
@@ -261,10 +273,64 @@ while comando1 != "D":
                     if estado_ == "G":
                         print(" Se encuentran los siguientes estudiantes:  \n")
                         TablaCampers.visualizar(Retirado)  
-
     elif comando1 == "A":
         comandoCam = ModuloCamper()
         if comandoCam == "E":
             continue
     elif comando1 == "B":
-        print("Modulo trainer")
+        comandoTra = "A"
+        while comandoTra != "C":
+            print("Modulo trainer")
+            comandoTra = "A" 
+            #menu.MenuTrainer(datos_clases)
+            if comandoTra == "A":
+                print("Registrate Nuevo Trainer!!!")
+                idTrain = input("Ingresa tu ID: ")
+                nombre = input("Ingresa tu nombre: ")
+                apellido = input("Ingresa tu apellido: ")
+                infoHora = {"A":"2:00 PM", "B":"6:00 PM", "C":"10:00 PM"}
+                # Mostrar las horas disponibles
+                print(""" 
+                                Selecciona Tu hora
+                            A) 2:00 PM
+                            B) 6:00 PM
+                            C) 10:00 PM
+                            """)
+                hora = input("Elige tu hora (A, B o C): ")
+
+                for i in range(len(datos_clases)):
+                    if datos_clases[i]['Profesor'] == nombre:
+                        camper['Average Note'] = promedio
+                        if promedio >= 60:
+                            camper['Status'] = "Aprobado"
+                        else:
+                            camper['Status'] = "No Aprobado"                                
+                        encontrado = True                                
+                        datos.pop(i)
+                        datos.append(camper) 
+
+                    if not encontrado:
+                        print("No se encontró ningún estudiante con ese ID.")
+                    else:
+                        guardar_lista_estudiantes(datos)
+                        print("Los datos del estudiante han sido actualizados.")
+                        TablaCampers.visualizar(datos)
+                # Verificar si la hora seleccionada está en el diccionario
+                if hora in infoHora:
+                    # Guardar la hora seleccionada antes de eliminarla
+                    hora_seleccionada = infoHora[hora]
+                    # Eliminar la hora seleccionada del diccionario
+                    infoHora.pop(hora)
+                    for trainer in datos_clases:
+                        if trainer['Profesor'] == nombre:
+                            trainer['Hora'] = hora_seleccionada 
+                            break
+                    guardar_lista_Trainers(datos_clases)
+                    print(f"Has seleccionado la hora {hora_seleccionada}.")
+                    print("Hora eliminada del diccionario.")
+                else:
+                    print("Hora no válida.")
+
+                    
+                
+        

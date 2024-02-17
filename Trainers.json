@@ -19,12 +19,5 @@
         "Hora": "None",
         "Ruta": "None",
         "Salon": "None"
-    },
-    {
-        "ID": "123456",
-        "Profesor": "Juana",
-        "Hora": "2:00 PM",
-        "Ruta": "None",
-        "Salon": "None"
     }
 ]

@@ -228,6 +228,8 @@ while comando1 != "D":
                             for i in range(len(datos_clases)):
                                 trainer = datos_clases[i]
                                 if trainer['Profesor'] == profesor:
+                                    trainer['Ruta'] = ruta
+                                    trainer['Salon'] = salon
                                     ListaRutaNode.append(trainer)
                                     guardar_lista_RutaNode(ListaRutaNode)
                                     break
@@ -235,15 +237,19 @@ while comando1 != "D":
                             for i in range(len(datos_clases)):
                                 trainer = datos_clases[i]
                                 if trainer['Profesor'] == profesor:
+                                    trainer['Ruta'] = ruta
+                                    trainer['Salon'] = salon
                                     ListaRutaJava.append(trainer)
-                                    guardar_lista_RutaNode(ListaRutaJava)
+                                    guardar_lista_RutaJava(ListaRutaJava)
                                     break
                         if ruta == "NetCore":
                             for i in range(len(datos_clases)):
                                 trainer = datos_clases[i]
                                 if trainer['Profesor'] == profesor:
+                                    trainer['Ruta'] = ruta
+                                    trainer['Salon'] = salon
                                     ListaRutaNet.append(trainer)
-                                    guardar_lista_RutaNode(ListaRutaNet)
+                                    guardar_lista_RutaNet(ListaRutaNet)
                                     break
 
                         profesores_seleccionados.add(profesor)
@@ -311,7 +317,7 @@ while comando1 != "D":
                 #comando2 = menu.menuCoordinador()
                 
             if comando2 == "E":
-                RutaSelec = input("Digita la Ruta aa la cual quieres acceder para colocar Nota a un estudiante: ")
+                RutaSelec = input("Digita la Ruta a la cual quieres acceder para colocar Nota a un estudiante: ")
                 
                 if RutaSelec == "Node":
                     print("Se tienen los siguientes estudiantes: ")

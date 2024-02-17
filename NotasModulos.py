@@ -1,6 +1,7 @@
 import menu
 import random
 import TablaCampers
+import json
 import tabulate
 """
 def VisualizarGrupos(ruta1, ruta2, ruta3):
@@ -21,7 +22,25 @@ def VisualizarGrupos(ruta1, ruta2, ruta3):
     elif comando == "E":
         infoModulo5 = {"name": nombre, "Modulo 5": {"NetCore": notaNet, "Spring Boot":notaSB, "Express":notaExp}}
 """
+with open('RutaNode.json') as f:
+    ListaRutaNode = json.load(f)
+    
+with open('RutaJava.json') as f:
+    ListaRutaJava = json.load(f)
+    
+with open('RutaNet.json') as f:
+    ListaRutaNet = json.load(f)
 
+def guardar_lista_RutaNode(lista_RutaNode):
+    with open('RutaNode.json', 'w') as file:
+        file.write(json.dumps(lista_RutaNode, indent=4))
+def guardar_lista_RutaJava(lista_RutaJava):
+    with open('RutaJava.json', 'w') as file:
+        file.write(json.dumps(lista_RutaJava, indent=4))
+def guardar_lista_RutaNet(lista_RutaNet):
+    with open('RutaNet.json', 'w') as file:
+        file.write(json.dumps(lista_RutaNet, indent=4))
+        
 def VisualizarGrupos(ruta, ListaRuta):
     nuevaTablaM1 = []
     nuevaTablaM2 = []

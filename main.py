@@ -321,16 +321,16 @@ while comando1 != "D":
                 
                 if RutaSelec == "Node":
                     print("Se tienen los siguientes estudiantes: ")
-                    print(tabulate(ruta1, headers="keys"))
-                    NotasModulos.VisualizarGrupos(RutaSelec, ruta1)
+                    print(tabulate(ListaRutaNode, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaNode)
                 elif RutaSelec == "Java":
                     print("Se tienen los siguientes estudiantes: ")
-                    print(tabulate(ruta2, headers="keys"))
-                    NotasModulos.VisualizarGrupos(RutaSelec, ruta2)
+                    print(tabulate(ListaRutaJava, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaJava)
                 elif RutaSelec == "NetCore":
                     print("Se tienen los siguientes estudiantes: ")
-                    print(tabulate(ruta3, headers="keys"))
-                    NotasModulos.VisualizarGrupos(RutaSelec, ruta3)
+                    print(tabulate(ListaRutaNet, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaNet)
 
             if comando2 == "F":
                 comando3B = "A"

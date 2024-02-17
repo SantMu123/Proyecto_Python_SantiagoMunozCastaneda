@@ -63,13 +63,35 @@ def VisualizarGrupos(ruta, ListaRuta):
                     Ave = (NT*0.3 + NP*0.6 + AC*0.10)
                     print("RUTA ", ruta, " : ")
                     print("         MODULO 1: ")
-                    for camper in ListaRuta:
-                        if nombre == camper['name']:
-                            infoModulo1 = {"name": nombre, "Modulo 1": {"Nota Teorica": NT, "Nota Practica":NP, "Actividades":AC, "Final":Ave}}
-                            nuevaTablaM1.append(infoModulo1)
+                    
+                    for i in range(len(ListaRuta)):
+                        camper = ListaRuta[i]
+                        if camper['name'] == nombre:
+                            camper['NotaPractica1'] = NP
+                            camper['NotaTeorica1'] = NT
+                            camper['Actividades1'] = AC
+                            if Ave >= 60:
+                                camper['Modulo1'] = "Aprobado"
+                                camper['Riesgo'] = "Bajo"
+                            else:
+                                camper['Modulo1'] = "No aprobado"
+                                camper['Riesgo'] = "Alto"
+                            #nuevaTablaM1.append(infoModulo1)
                             break
-                    print(nuevaTablaM1)
+                    #print(nuevaTablaM1)
+                
+                    if ruta == "Node":
+                        guardar_lista_RutaNode(ListaRuta)
+                        TablaCampers.visualizar(ListaRuta)
+                    elif ruta == "Java":
+                        guardar_lista_RutaJava(ListaRuta)
+                        TablaCampers.visualizar(ListaRuta)
+                    elif ruta == "NetCore":
+                        guardar_lista_RutaNet(ListaRuta)
+                        TablaCampers.visualizar(ListaRuta)
+                    
                 elif comando2 == "B":
+                    
                     print("RUTA ", ruta, " : ")
                     print("         MODULO 1: ")
                     for i,camper in enumerate(ListaRuta, start=0):
@@ -199,3 +221,4 @@ def VisualizarGrupos(ruta, ListaRuta):
                         infoModulo5 = {"name": camper['name'], "Modulo 5": {"Nota Teorica": NT, "Nota Practica":NP, "Actividades":AC, "Final":Ave}}
                         nuevaTablaM5.append(infoModulo5)
                     TablaCampers.visualizarNotasModulos(nuevaTablaM1)
+    return 

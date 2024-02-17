@@ -26,6 +26,7 @@ def asignar(ruta, listaCampers, nombreEstudiante):
         "ID": "None",
         "name": "None",
         "Second name": "None",
+        "Riesgo":"None",
         "Modulo1": "No Aprobado",
         "NotaPractica1": "None",
         "NotaTeorica1": "None",

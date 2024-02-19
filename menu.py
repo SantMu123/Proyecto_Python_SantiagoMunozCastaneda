@@ -154,10 +154,10 @@ def subMenuVisualizarEstado():
                                                 Seleccione según su necesidad:
                                                 
                                                 A) Ver Campers en Proceso de Ingreso
-                                                B) Ver Campers en Insicrito
-                                                C) Ver Campers en Aprobado
-                                                D) Ver Campers en Cursando
-                                                E) Ver Campers en Graduado
+                                                B) Ver Campers en Inscrito
+                                                C) Ver Campers en Aprobado Examen Inicial
+                                                D) Ver Campers con bajo Rendimiento
+                                                E) Ver Nota Campers por Ruta -> Modulo
                                                 F) Ver Campers en Expulsado
                                                 G) Ver Campers en Retirado
                                                 H) Ver Menú Anterior
@@ -169,6 +169,22 @@ def subMenuVisualizarEstado():
         print("Comando Incorrecto")
         subMenuVisualizarEstado()
 
+def subMenuModulo():
+    comando = input("""
+                                                Seleccione el numero según el modulo del que quiere saber la nota:
+                                                
+                                                1) Fundamentos de Programación
+                                                2) Programación Web
+                                                3) Programación Formal
+                                                4) Bases de Datos
+                                                5) Backend
+                    
+                                            """)
+    if comando in ["1", "2", "3", "4", "5"]:
+        return comando
+    else:
+        print("Comando Incorrecto")
+        subMenuModulo()
 #MENÚ CAMPER
 #************************************************************************************************
 

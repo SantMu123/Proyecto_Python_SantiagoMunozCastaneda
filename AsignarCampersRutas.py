@@ -21,7 +21,7 @@ def guardar_lista_RutaNet(lista_RutaNet):
         file.write(json.dumps(lista_RutaNet, indent=4))
 
 
-def asignar(ruta, listaCampers, nombreEstudiante):
+def asignar(ruta, listaCampers, IDEstudiante):
         info = {
         "ID": "None",
         "name": "None",
@@ -57,10 +57,10 @@ def asignar(ruta, listaCampers, nombreEstudiante):
         RutaJava = []
         RutaNet = []
         for camper in listaCampers:
-            if camper['name'] == nombreEstudiante:
-                info['name'] = nombreEstudiante
+            if camper['ID'] == IDEstudiante:
+                info['name'] = camper['name']
                 info['Second name'] = camper['Second name']
-                info['ID'] = camper['ID']
+                info['ID'] = IDEstudiante
                 if ruta == "Node":
                     ListaRutaNode.append(info)
                     guardar_lista_RutaNode(ListaRutaNode)
@@ -73,7 +73,7 @@ def asignar(ruta, listaCampers, nombreEstudiante):
                     ListaRutaNet.append(info)
                     guardar_lista_RutaNet(ListaRutaNet)
                     RutaNet.append(info)
-        return RutaNode, RutaJava, RutaNet
+        return ListaRutaNode, ListaRutaJava, ListaRutaNet
 
 def asignarAleatorio(listaCampers):
     RutaNode = []

@@ -1,6 +1,15 @@
 import menu
 import json
 
+with open('RutaNode.json') as f:
+    ListaRutaNode = json.load(f)
+    
+with open('RutaJava.json') as f:
+    ListaRutaJava = json.load(f)
+    
+with open('RutaNet.json') as f:
+    ListaRutaNet = json.load(f)
+
 def cargar_lista_estudiantes():
     try:
         with open('Campers.json', 'r') as file:
@@ -18,7 +27,7 @@ def agregar_estudiante(lista_estudiantes, info):
 
 def ModuloCamper():
     comando = "A"
-    while comando != "E":
+    while comando != "C":
         comando = menu.MenuCamper()
         if comando == "A":
             
@@ -63,18 +72,31 @@ def ModuloCamper():
             comando2b = "A"
             while comando2b != "B":
                 print("Entraste a la opción de Ver Notas!!!")
-                nombre = input("Ingresa tu nombre: ")
-                apellido = input("Ingresa tu apellido: ")
-                campers = cargar_lista_estudiantes()
-                bandera = True
-                for camper in campers:
-                        if camper['name'] == nombre and camper['Second name'] == apellido:
-                            print("Tus notas son: ")
-
-
-                            break
-                        else:
-                            bandera = False
+                id = int(input("Ingrese tu identificacion: "))
+                for camper in ListaRutaJava:
+                    if camper['ID'] == id:
+                        print("TE ENCUENTRAS EN LA RUTA JAVA: ")
+                        bandera = True
+                        titulos = list(camper.keys())
+                        for i in titulos:
+                            if not camper[i] == "None":
+                                print("Nota: ", camper[i])
+                for camper in ListaRutaNode:
+                    if camper['ID'] == id:
+                        print("TE ENCUENTRAS EN LA RUTA NODE: ")
+                        bandera = True
+                        titulos = list(camper.keys())
+                        for i in titulos:
+                            if not camper[i] == "None":
+                                print("Nota: ", camper[i])
+                for camper in ListaRutaNet:
+                    if camper['ID'] == id:
+                        print("TE ENCUENTRAS EN LA RUTA NETCORE: ")
+                        bandera = True
+                        titulos = list(camper.keys())
+                        for i in titulos:
+                            if not camper[i] == "None":
+                                print(i," : ", camper[i])
                 if not bandera:
                     print("No se ha encontrado Camper en la base de datos")
                 comando2b = menu.subMenuNotasCamper()

@@ -2,7 +2,7 @@
     {
         "ID": "None",
         "name": "None",
-        "Secon name": "None",
+        "Second name": "None",
         "Modulo1": "None",
         "NotaPractica1": "None",
         "NotaTeorica1": "None",
@@ -28,12 +28,5 @@
         "NotaTeorica5": "None",
         "Actividades5": "None",
         "Final5": "None"
-    },
-    {
-        "ID": "None",
-        "Profesor": "Santiago",
-        "Hora": "None",
-        "Ruta": "NetCore",
-        "Salon": "Sputnik"
     }
 ]

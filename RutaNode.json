@@ -28,13 +28,5 @@
         "NotaTeorica5": "None",
         "Actividades5": "None",
         "Final5": "None"
-    },
-    {
-        "ID": "None",
-        "Profesor": "Oscar",
-        "Hora": "6:00 PM",
-        "Ruta": "Node",
-        "Salon": "Apolo"
     }
-
 ]

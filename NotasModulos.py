@@ -56,7 +56,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                 comando2 = menu.subMenuNotaModulo()
                 if comando2 == "A":
                     print("++++++ Has ingresado al modulo de fundamentos de programacón ++++++ \n")
-                    nombre = input("Digita el nombre del estudiante al que deseas asignar nota: ")
+                    id = int(input("Digita el ID del estudiante al que deseas asignar nota: "))
                     NT = int(input("Ingresa la nota teorica del modulo: "))
                     NP = int(input("Ingresa la nota practica del modulo: "))
                     AC = int(input("Ingresa la nota de actividades: "))            
@@ -66,10 +66,12 @@ def VisualizarGrupos(ruta, ListaRuta):
                     
                     for i in range(len(ListaRuta)):
                         camper = ListaRuta[i]
-                        if camper['name'] == nombre:
+                        if camper['ID'] == id:
+                            print("Has ingresado")
                             camper['NotaPractica1'] = NP
                             camper['NotaTeorica1'] = NT
                             camper['Actividades1'] = AC
+                            camper['Final1'] = Ave
                             if Ave >= 60:
                                 camper['Modulo1'] = "Aprobado"
                                 camper['Riesgo'] = "Bajo"
@@ -122,6 +124,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                             camper['NotaPractica2'] = NP
                             camper['NotaTeorica2'] = NT
                             camper['Actividades2'] = AC
+                            camper['Final2'] = Ave
                             if Ave >= 60:
                                 camper['Modulo2'] = "Aprobado"
                                 camper['Riesgo'] = "Bajo"
@@ -172,6 +175,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                             camper['NotaPractica3'] = NP
                             camper['NotaTeorica3'] = NT
                             camper['Actividades3'] = AC
+                            camper['Final3'] = Ave
                             if Ave >= 60:
                                 camper['Modulo3'] = "Aprobado"
                                 camper['Riesgo'] = "Bajo"
@@ -220,6 +224,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                             camper['NotaPractica4'] = NP
                             camper['NotaTeorica4'] = NT
                             camper['Actividades4'] = AC
+                            camper['Final4'] = Ave
                             if Ave >= 60:
                                 camper['Modulo4'] = "Aprobado"
                                 camper['Riesgo'] = "Bajo"
@@ -268,6 +273,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                             camper['NotaPractica5'] = NP
                             camper['NotaTeorica5'] = NT
                             camper['Actividades5'] = AC
+                            camper['Final5'] = Ave
                             if Ave >= 60:
                                 camper['Modulo5'] = "Aprobado"
                                 camper['Riesgo'] = "Bajo"

@@ -6,7 +6,7 @@
         "attendant": "Jane Doe",
         "Number Contact #1": "1234567890",
         "Number Contact #2": "98765432",
-        "Status": "Inscrito",
+        "Status": "Ingreso",
         "Risk": "None",
         "Teoric Note": "None",
         "Practical Note": "None",
@@ -20,7 +20,7 @@
         "attendant": "John Smith",
         "Number Contact #1": "0987654321",
         "Number Contact #2": "12345678",
-        "Status": "Inscrito",
+        "Status": "Ingreso",
         "Risk": "None",
         "Teoric Note": "None",
         "Practical Note": "None",
@@ -1260,20 +1260,6 @@
         "ID": 90
     },
     {
-        "name": "Enzo",
-        "Second name": "Almeida",
-        "Adress": "Rua H, 234",
-        "attendant": "Larissa",
-        "Number Contact #1": 8901234567,
-        "Number Contact #2": 89012345,
-        "Status": "Inscrito",
-        "Risk": "None",
-        "Teoric Note": "None",
-        "Practical Note": "None",
-        "Average Note": "None",
-        "ID": 91
-    },
-    {
         "name": "Lara",
         "Second name": "Fernandes",
         "Adress": "Rua I, 567",
@@ -1412,5 +1398,19 @@
         "Practical Note": "None",
         "Average Note": "None",
         "ID": 101
+    },
+    {
+        "name": "Enzo",
+        "Second name": "Almeida",
+        "Adress": "Rua H, 234",
+        "attendant": "Larissa",
+        "Number Contact #1": 8901234567,
+        "Number Contact #2": 89012345,
+        "Status": "Aprobado",
+        "Risk": "None",
+        "Teoric Note": "None",
+        "Practical Note": "None",
+        "Average Note": "None",
+        "ID": 91
     }
 ]

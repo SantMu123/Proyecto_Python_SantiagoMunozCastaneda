@@ -1,4 +1,5 @@
 import json
+import os
 import menu
 import random
 import AsignarCampersRutas
@@ -22,6 +23,37 @@ def guardar_lista_RutaJava(lista_RutaJava):
 def guardar_lista_RutaNet(lista_RutaNet):
     with open('RutaNet.json', 'w') as file:
         file.write(json.dumps(lista_RutaNet, indent=4))
+
+def guardar_lista_Ingreso(lista_Ingreso):
+    nombre_archivo = 'Ingreso.json'
+    if not os.path.exists(nombre_archivo):
+        with open(nombre_archivo, 'w') as file:
+            json.dump(lista_Ingreso, file, indent=4)
+    else:
+        print(f"El archivo '{nombre_archivo}' ya existe. No se creará uno nuevo.")
+def guardar_lista_Inscrito(lista_Inscrito):
+    nombre_archivo = 'lista_Inscrito.json'
+    if not os.path.exists(nombre_archivo):
+        with open(nombre_archivo, 'w') as file:
+            json.dump(lista_Inscrito, file, indent=4)
+    else:
+        print(f"El archivo '{nombre_archivo}' ya existe. No se creará uno nuevo.")
+
+def guardar_lista_Aprobado(lista_Aprobado):
+    nombre_archivo = 'lista_Aprobado.json'
+    if not os.path.exists(nombre_archivo):
+        with open(nombre_archivo, 'w') as file:
+            json.dump(lista_Aprobado, file, indent=4)
+    else:
+        print(f"El archivo '{nombre_archivo}' ya existe. No se creará uno nuevo.")
+
+def guardar_lista_BajoRendimiento(lista_BajoRendimiento):
+    nombre_archivo = 'lista_BajoRendimiento.json'
+    if not os.path.exists(nombre_archivo):
+        with open(nombre_archivo, 'w') as file:
+            json.dump(lista_BajoRendimiento, file, indent=4)
+    else:
+        print(f"El archivo '{nombre_archivo}' ya existe. No se creará uno nuevo.")
 
 Ingreso = []
 Inscrito = []
@@ -230,8 +262,8 @@ while comando1 != "D":
                                 if trainer['Profesor'] == profesor:
                                     trainer['Ruta'] = ruta
                                     trainer['Salon'] = salon
-                                    ListaRutaNode.append(trainer)
-                                    guardar_lista_RutaNode(ListaRutaNode)
+                                    #ListaRutaNode.append(trainer)
+                                    #guardar_lista_RutaNode(ListaRutaNode)
                                     break
                         if ruta == "Java":
                             for i in range(len(datos_clases)):
@@ -293,9 +325,9 @@ while comando1 != "D":
                     comandoAsignarCamper = menu.subMenuAsignarRutas()
     
                     if comandoAsignarCamper == "A":
-                        nom = input("Digita el nombre del camper al que quieres asignar a una ruta: ")
+                        id = int(input("Digita el ID del camper al que quieres asignar a una ruta: "))
                         rut = input("Selecciona la Ruta, recuerda que hay capacidad de 33 estudiantes: ")
-                        tabla = AsignarCampersRutas.asignar(rut, datos, nom)
+                        tabla = AsignarCampersRutas.asignar(rut, datos, id)
                         for i, ruta in enumerate(tabla, start=1):
                             print(f"Grupo {i}:")
                             print(tabulate(ruta, headers="keys"))
@@ -333,39 +365,109 @@ while comando1 != "D":
                     NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaNet)
 
             if comando2 == "F":
-                comando3B = "A"
-                while comando3B != "H":
+                estado_ = "A"
+                while estado_ != "H":
                     estado_ = menu.subMenuVisualizarEstado()
                     if estado_ == "A":
                         print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Ingreso)                
+                        listaProcesoIngreso = []
+                        for i in range(len(datos)):
+                            camper = datos[i]
+                            if camper["Status"] == "Ingreso":
+                                listaProcesoIngreso.append(camper)
+                        
+                        TablaCampers.visualizar(listaProcesoIngreso)
+                        guardar_lista_Ingreso(listaProcesoIngreso)                  
                     if estado_ == "B":
                         print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Inscrito)  
+                        listaInscrito = []
+                        for i in range(len(datos)):
+                            camper = datos[i]
+                            if camper["Status"] == "Inscrito":
+                                listaInscrito.append(camper)
+                        
+                        TablaCampers.visualizar(listaInscrito)
+                        guardar_lista_Inscrito(listaProcesoIngreso) 
                     if estado_ == "C":
                         print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Aprobado)  
+                        listaAprobados = []
+                        for i in range(len(datos)):
+                            camper = datos[i]
+                            if camper["Status"] == "Aprobado":
+                                listaAprobados.append(camper)
+                        
+                        TablaCampers.visualizar(listaAprobados)
+                        guardar_lista_Aprobado(listaAprobados)
                     if estado_ == "D":
                         print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Cursando)   
+                        listaBajoRendimiento = []
+                        for i in range(len(datos)):
+                            camper = datos[i]
+                            if camper["Risk"] == "Alto":
+                                listaBajoRendimiento.append(camper)
                     if estado_ == "E":
-                        print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Graduado)  
-                    if estado_ == "F":
-                        print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Expulsado)  
-                    if estado_ == "G":
-                        print(" Se encuentran los siguientes estudiantes:  \n")
-                        TablaCampers.visualizar(Retirado)  
+                        rutaE = input("Ingresa la Ruta: ")
+                        if rutaE == "Node":
+                            modulo, nota1, nota2, nota3, final = 0,0,0,0,0
+                            print("Has ingresado a la ruta Node. \n Estos son los estudiantes: ")
+                            TablaCampers.visualizar(ListaRutaNode)
+                            numModulo = menu.subMenuModulo()
+                            id = int(input("Digita el ID del camper al que quieres saber la nota: "))
+                            modulo = "Modulo" + numModulo
+                            nota1 = "NotaPractica" + numModulo
+                            nota2 = "NotaTeorica" + numModulo
+                            nota3 = "Actividades" + numModulo
+                            final = "Final" + numModulo
+                            for i in range(len(ListaRutaNode)):
+                                camper = ListaRutaNode[i]
+                                if camper['ID'] == id:
+                                    print("El estado del Camper en el modulo es: ", camper[modulo])
+                                    print("La nota Practica es: ", camper[nota1])
+                                    print("La nota Teorica es: ", camper[nota2])
+                                    print("La nota Practica es: ", camper[nota3])
+                                    print("La nota final es: ", camper[final])
+                        if rutaE == "Java":
+                            modulo, nota1, nota2, nota3, final = 0,0,0,0,0
+                            print("Has ingresado a la ruta Java. \n Estos son los estudiantes: ")
+                            TablaCampers.visualizar(ListaRutaJava)
+                            numModulo = menu.subMenuModulo()
+                            id = int(input("Digita el ID del camper al que quieres saber la nota: "))
+                            modulo = "Modulo" + numModulo
+                            nota1 = "NotaPractica" + numModulo
+                            nota2 = "NotaTeorica" + numModulo
+                            nota3 = "Actividades" + numModulo
+                            final = "Final" + numModulo
+                            for i in range(len(ListaRutaJava)):
+                                camper = ListaRutaJava[i]
+                                if camper['ID'] == id:
+                                    print("El estado del Camper en el modulo es: ", camper[modulo])
+                                    print("La nota Practica es: ", camper[nota1])
+                                    print("La nota Teorica es: ", camper[nota2])
+                                    print("La nota Practica es: ", camper[nota3])
+                                    print("La nota final es: ", camper[final])
+                        if rutaE == "NetCore":
+                            modulo, nota1, nota2, nota3, final = 0,0,0,0,0
+                            print("Has ingresado a la ruta Node. \n Estos son los estudiantes: ")
+                            TablaCampers.visualizar(ListaRutaNet)
+                            numModulo = menu.subMenuModulo()
+                            id = int(input("Digita el ID del camper al que quieres saber la nota: "))
+                            modulo = "Modulo" + numModulo
+                            nota1 = "NotaPractica" + numModulo
+                            nota2 = "NotaTeorica" + numModulo
+                            nota3 = "Actividades" + numModulo
+                            final = "Final" + numModulo
+                            for i in range(len(ListaRutaNet)):
+                                camper = ListaRutaNet[i]
+                                if camper['ID'] == id:
+                                    print("El estado del Camper en el modulo es: ", camper[modulo])
+                                    print("La nota Practica es: ", camper[nota1])
+                                    print("La nota Teorica es: ", camper[nota2])
+                                    print("La nota Practica es: ", camper[nota3])
+                                    print("La nota final es: ", camper[final])
+                        
                         
     elif comando1 == "A":
-        comando1 = "A"
-        while comando1 != "C":
-            comando1 = menu.MenuCamper()
-            if comando1 == "A":
-                comandoCam = ModuloCamper()
-            if comando1 == "B":
-                print("Notas")
+        ModuloCamper()
 
     elif comando1 == "B":
         comandoTra = "A"

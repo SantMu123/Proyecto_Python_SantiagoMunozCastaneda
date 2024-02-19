@@ -93,7 +93,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                 comando2 = menu.subMenuNotaModulo()
                 if comando2 == "A":
                     print("++++++ Has ingresado al modulo de Programacion Web ++++++ \n")
-                    nombre = input("Digita el nombre del estudiante al que deseas asignar nota: ")
+                    id = int(input("Digita el ID del estudiante al que deseas asignar nota: "))
                     NT = int(input("Ingresa la nota teorica del modulo: "))
                     NP = int(input("Ingresa la nota practica del modulo: "))
                     AC = int(input("Ingresa la nota de actividades: "))            
@@ -102,7 +102,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                     print("         MODULO 2: ")
                     for i in range(len(ListaRuta)):
                         camper = ListaRuta[i]
-                        if camper['name'] == nombre:
+                        if camper['ID'] == id:
                             camper['NotaPractica2'] = NP
                             camper['NotaTeorica2'] = NT
                             camper['Actividades2'] = AC
@@ -140,11 +140,12 @@ def VisualizarGrupos(ruta, ListaRuta):
                     
                     TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "C":
+            comando2 = "A"
             while comando2 != "C": 
                 comando2 = menu.subMenuNotaModulo()
                 if comando2 == "A":
                     print("++++++ Has ingresado al modulo de Programacion Formal ++++++ \n")
-                    nombre = input("Digita el nombre del estudiante al que deseas asignar nota: ")
+                    id = int(input("Digita el ID del estudiante al que deseas asignar nota: "))
                     NT = int(input("Ingresa la nota teorica del modulo: "))
                     NP = int(input("Ingresa la nota practica del modulo: "))
                     AC = int(input("Ingresa la nota de actividades: "))            
@@ -153,7 +154,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                     print("         MODULO 3: ")
                     for i in range(len(ListaRuta)):
                         camper = ListaRuta[i]
-                        if camper['name'] == nombre:
+                        if camper['ID'] == id:
                             camper['NotaPractica3'] = NP
                             camper['NotaTeorica3'] = NT
                             camper['Actividades3'] = AC
@@ -189,11 +190,12 @@ def VisualizarGrupos(ruta, ListaRuta):
                         nuevaTablaM3.append(infoModulo3)
                     TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "D":
+            comando2 = "A"
             while comando2 != "C": 
                 comando2 = menu.subMenuNotaModulo()
                 if comando2 == "A":
                     print("++++++ Has ingresado al modulo de Base de datos ++++++ \n")
-                    nombre = input("Digita el nombre del estudiante al que deseas asignar nota: ")
+                    id = int(input("Digita el ID del estudiante al que deseas asignar nota: "))
                     NT = int(input("Ingresa la nota teorica del modulo: "))
                     NP = int(input("Ingresa la nota practica del modulo: "))
                     AC = int(input("Ingresa la nota de actividades: "))            
@@ -202,7 +204,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                     print("         MODULO 4: ")
                     for i in range(len(ListaRuta)):
                         camper = ListaRuta[i]
-                        if camper['name'] == nombre:
+                        if camper['ID'] == id:
                             camper['NotaPractica4'] = NP
                             camper['NotaTeorica4'] = NT
                             camper['Actividades4'] = AC
@@ -238,11 +240,12 @@ def VisualizarGrupos(ruta, ListaRuta):
                         nuevaTablaM4.append(infoModulo4)
                     TablaCampers.visualizarNotasModulos(nuevaTablaM1)
         elif comando == "E":
+            comando2 = "A"
             while comando2 != "C": 
                 comando2 = menu.subMenuNotaModulo()
                 if comando2 == "A":
                     print("++++++ Has ingresado al modulo de Backend ++++++ \n")
-                    nombre = input("Digita el nombre del estudiante al que deseas asignar nota: ")
+                    id = int(input("Digita el ID del estudiante al que deseas asignar nota: "))
                     NT = int(input("Ingresa la nota teorica del modulo: "))
                     NP = int(input("Ingresa la nota practica del modulo: "))
                     AC = int(input("Ingresa la nota de actividades: "))            
@@ -251,7 +254,7 @@ def VisualizarGrupos(ruta, ListaRuta):
                     print("         MODULO 5: ")
                     for i in range(len(ListaRuta)):
                         camper = ListaRuta[i]
-                        if camper['name'] == nombre:
+                        if camper['ID'] == id:
                             camper['NotaPractica5'] = NP
                             camper['NotaTeorica5'] = NT
                             camper['Actividades5'] = AC

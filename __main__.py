@@ -55,6 +55,10 @@ def guardar_lista_BajoRendimiento(lista_BajoRendimiento):
     else:
         print(f"El archivo '{nombre_archivo}' ya existe. No se creará uno nuevo.")
 
+def guardar_lista_estudiantes(lista_trainers):
+    with open('Trainers.json', 'w') as file:
+        file.write(json.dumps(lista_trainers, indent=4))
+
 Ingreso = []
 Inscrito = []
 Aprobado = []
@@ -63,6 +67,8 @@ Graduado = []
 Expulsado = []
 Retirado = []
 datos = []
+
+
 with open('Trainers.json') as f:
     datos_clases = json.load(f)
     
@@ -249,11 +255,24 @@ while comando1 != "D":
                         if ruta in rutas_seleccionadas:
                             print("Esta ruta ya ha sido seleccionada anteriormente.")
                             continue
-
+                        else:
+                            try:
+                                for i in datos_clases:
+                                    if i['Profesor'] == profesor:
+                                        i['Ruta'] = ruta
+                            except Exception:
+                                print("cambio")
                         salon = input("Digite el salon: ")
                         if salon in salones_seleccionados:
                             print("Este salon ya ha sido seleccionado anteriormente.")
                             continue
+                        else:
+                            try:
+                                for i in datos_clases:
+                                    if i['Profesor'] == profesor:
+                                        i['Ruta'] = ruta
+                            except Exception:
+                                print("cambio")
                         
                         
                         if ruta == "Node":
@@ -290,7 +309,7 @@ while comando1 != "D":
 
                         nueva_ruta = (profesor, ruta, salon)
                         rutas.add(nueva_ruta)
-
+                        guardar_lista_Trainers(datos_clases)
                     return rutas
                 """
                 datos_clases = [
@@ -327,11 +346,20 @@ while comando1 != "D":
                     if comandoAsignarCamper == "A":
                         id = int(input("Digita el ID del camper al que quieres asignar a una ruta: "))
                         rut = input("Selecciona la Ruta, recuerda que hay capacidad de 33 estudiantes: ")
-                        tabla = AsignarCampersRutas.asignar(rut, datos, id)
-                        for i, ruta in enumerate(tabla, start=1):
+                        tabla1, tabla2, tabla3 = AsignarCampersRutas.asignar(rut, datos, id)
+
+                        print(tabulate(tabla1, headers="keys"))
+                        print("*********************************")
+                        print(tabulate(tabla2, headers="keys"))
+                        print("*********************************")
+
+                        print(tabulate(tabla3, headers="keys"))
+                        """
+                        for ruta in enumerate(tabla, start=1):
                             print(f"Grupo {i}:")
                             print(tabulate(ruta, headers="keys"))
                             print()
+                        """
 
                     elif comandoAsignarCamper == "B":
                         ruta1, ruta2, ruta3 = AsignarCampersRutas.asignarAleatorio(datos)
@@ -353,16 +381,17 @@ while comando1 != "D":
                 
                 if RutaSelec == "Node":
                     print("Se tienen los siguientes estudiantes: ")
-                    print(tabulate(ListaRutaNode, headers="keys"))
-                    NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaNode)
+                    #print(ruta1)
+                    print(tabulate(tabla1, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, tabla1)
                 elif RutaSelec == "Java":
                     print("Se tienen los siguientes estudiantes: ")
-                    print(tabulate(ListaRutaJava, headers="keys"))
-                    NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaJava)
+                    print(tabulate(tabla2, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, tabla2)
                 elif RutaSelec == "NetCore":
                     print("Se tienen los siguientes estudiantes: ")
-                    print(tabulate(ListaRutaNet, headers="keys"))
-                    NotasModulos.VisualizarGrupos(RutaSelec, ListaRutaNet)
+                    print(tabulate(tabla3, headers="keys"))
+                    NotasModulos.VisualizarGrupos(RutaSelec, tabla3)
 
             if comando2 == "F":
                 estado_ = "A"

@@ -1,21 +1,7 @@
 [
     {
-        "ID": "123",
-        "Profesor": "Oscar",
-        "Hora": "None",
-        "Ruta": "None",
-        "Salon": "None"
-    },
-    {
-        "ID": "456",
-        "Profesor": "Sofia",
-        "Hora": "None",
-        "Ruta": "None",
-        "Salon": "None"
-    },
-    {
-        "ID": "789",
-        "Profesor": "Santiago",
+        "ID": "None",
+        "Profesor": "None",
         "Hora": "None",
         "Ruta": "None",
         "Salon": "None"

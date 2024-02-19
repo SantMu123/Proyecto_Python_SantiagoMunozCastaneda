@@ -1260,6 +1260,20 @@
         "ID": 90
     },
     {
+        "name": "Enzo",
+        "Second name": "Almeida",
+        "Adress": "Rua H, 234",
+        "attendant": "Larissa",
+        "Number Contact #1": 8901234567,
+        "Number Contact #2": 89012345,
+        "Status": "None",
+        "Risk": "None",
+        "Teoric Note": "None",
+        "Practical Note": "None",
+        "Average Note": "None",
+        "ID": 91
+    },
+    {
         "name": "Lara",
         "Second name": "Fernandes",
         "Adress": "Rua I, 567",
@@ -1398,19 +1412,5 @@
         "Practical Note": "None",
         "Average Note": "None",
         "ID": 101
-    },
-    {
-        "name": "Enzo",
-        "Second name": "Almeida",
-        "Adress": "Rua H, 234",
-        "attendant": "Larissa",
-        "Number Contact #1": 8901234567,
-        "Number Contact #2": 89012345,
-        "Status": "Aprobado",
-        "Risk": "None",
-        "Teoric Note": "None",
-        "Practical Note": "None",
-        "Average Note": "None",
-        "ID": 91
-    }
+    }   
 ]

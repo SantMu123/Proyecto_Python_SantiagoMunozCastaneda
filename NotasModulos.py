@@ -3,25 +3,7 @@ import random
 import TablaCampers
 import json
 import tabulate
-"""
-def VisualizarGrupos(ruta1, ruta2, ruta3):
-    nuevaTabla = []
-    comando = menu.subMenuVisualizarModulo()
-    if comando == "A":
-        nombre = input("Digita el nombre del estudiante al que deseas asignar nota: ")
-        notaIntro = int()
-        notaPS = 
-        notaPython = 
-        infoModulo1 = {"name": nombre, "Modulo 1": {"Introduccion Algoritmia": notaIntro, "PSeint":notaPS, "Python":notaPython}}
-    elif comando == "B":
-        infoModulo2 = {"name": nombre, "Modulo 2": {"HTML": notaHTML, "CSS":notaCSS, "Bootstrap":notaBT}}
-    elif comando == "C":    
-        infoModulo3 = {"name": nombre, "Modulo 3": {"Java": notaJava, "JavaScript":notaJS, "C#":notaC}}
-    elif comando == "D":
-        infoModulo4 = {"name": nombre, "Modulo 4": {"Mysql": notaSQL, "MongoDb":notaMD, "Postgresql":notaPGql}}
-    elif comando == "E":
-        infoModulo5 = {"name": nombre, "Modulo 5": {"NetCore": notaNet, "Spring Boot":notaSB, "Express":notaExp}}
-"""
+
 with open('RutaNode.json') as f:
     ListaRutaNode = json.load(f)
     

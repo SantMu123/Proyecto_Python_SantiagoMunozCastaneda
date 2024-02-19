@@ -89,4 +89,4 @@ def asignarAleatorio(listaCampers):
         elif ruta_aleatoria == "NetCore":
             RutaNet.append(camper)
 
-    return RutaNode, RutaJava, RutaNet
+    return RutaNode

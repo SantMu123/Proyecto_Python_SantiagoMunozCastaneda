@@ -38,6 +38,7 @@ def ModuloCamper():
                 asistente = input("Digita tu attendant: ")
                 numeroCel = input("Digita tu numero CEL: ")
                 numeroTel = input("Digita tu numero TEl: ")
+                id = int(input("Digita tu ID: "))
                 
                 info = {
                 "name": nombre,
@@ -50,7 +51,8 @@ def ModuloCamper():
                 "Risk": "None",
                 "Teoric Note": "None",
                 "Practical Note": "None",
-                "Average Note": "None"
+                "Average Note": "None",
+                "ID":id
                 }
 
                 campers = cargar_lista_estudiantes()

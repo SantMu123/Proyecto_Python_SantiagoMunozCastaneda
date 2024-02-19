@@ -1,20 +1,20 @@
 [
     {
-        "ID": "None",
+        "ID": "123",
         "Profesor": "Oscar",
-        "Hora": "6:00 PM",
+        "Hora": "None",
         "Ruta": "None",
         "Salon": "None"
     },
     {
-        "ID": "None",
+        "ID": "456",
         "Profesor": "Sofia",
         "Hora": "None",
         "Ruta": "None",
         "Salon": "None"
     },
     {
-        "ID": "None",
+        "ID": "789",
         "Profesor": "Santiago",
         "Hora": "None",
         "Ruta": "None",
